@@ -1,4 +1,6 @@
 <template>
+
+
   <v-layout column>
     <v-flex xs6 offset-xs3>
       <div class="white elevation-2">
@@ -34,8 +36,6 @@
       </div>
     </v-flex>
   </v-layout>
-
-
 
 
 </template>
@@ -76,7 +76,4 @@ export default {
 </script>
 
 <style scoped>
-  .error {
-    color: darkred;
-  }
 </style>
