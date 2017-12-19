@@ -15,7 +15,6 @@
           <v-btn class="cyan" dark @click="login">Login</v-btn>
           <br>
           <!--<div class="success" v-html="success"></div>-->
-
           <v-snackbar
             :timeout="timeout"
             :top="y === 'top'"
@@ -34,9 +33,6 @@
       </panel>
     </v-flex>
   </v-layout>
-
-
-
 
 </template>
 

@@ -1,6 +1,7 @@
 /* eslint-disable */
 const AuthenticationController = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
+const SongsController = require('./controllers/SongsController')
 
 
 module.exports = (app) => {
@@ -11,20 +12,9 @@ module.exports = (app) => {
 	 app.post('/login',
 			 AuthenticationController.login)
 
-	 app.get('/songs', (req, res) => {
-	 	 songs = [
-	 	 		{
-					title: 'Test 1',
-					artist: 'Test 1',
-					album: 'Test 1'
-		 		},
-				{
-					title: 'Test 2',
-				  artist: 'Test 2',
-					album: 'Test 2'
-				}
-		 ]
+	 app.get('/songs',
+			 SongsController.getAllSongs)
 
-	 	 res.send(songs)
-	 })
+	 app.post('/songs',
+			 SongsController.post)
 }

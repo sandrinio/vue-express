@@ -1,3 +1,4 @@
+
 <template>
 <v-toolbar class="cyan" fixed dark>
   <v-toolbar-title class="mr-4" @click="navigateTo({name: 'home'})"><span class="home">Nav Tab</span></v-toolbar-title>
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+  /* eslint-disable */
   export default {
     data () {
       return {

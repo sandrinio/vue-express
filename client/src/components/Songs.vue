@@ -1,18 +1,25 @@
 <template>
-
   <v-layout column>
     <v-flex xs6 offset-xs3>
-      <panel title="Songs">
-        <ul v-for="song in songs" :key="song.title">
-            <li>{{ song.title }}</li>
+      <div class="white elevation-2">
+        <v-toolbar flat dense class="cyan" dark>
+          <v-toolbar-title>
+            Songs
+            <v-btn fab dark color="teal" @click="addASongRoute">
+              <v-icon dark>add</v-icon>
+            </v-btn>
+          </v-toolbar-title>
+        </v-toolbar>
+        <div class="pl-4 pr-4 pt-2 pb-2" >
+          <ul v-for="song in songs">
+            <li>Title: {{ song.title }}</li>
             <li>{{ song.artist }}</li>
             <li>{{ song.album }}</li>
-        </ul>
-
-      </panel>
+          </ul>
+        </div>
+      </div>
     </v-flex>
   </v-layout>
-
 </template>
 
 <script>
@@ -28,7 +35,15 @@
       }
     },
     async mounted () {
-      this.songs = SongsService.getAllSongs()
+      this.songs = (await SongsService.getAllSongs()).data
+      console.log(this.songs)
+    },
+    methods: {
+      addASongRoute () {
+        this.$router.push({
+          name: "songs-create"
+        })
+      }
     }
   }
 </script>
