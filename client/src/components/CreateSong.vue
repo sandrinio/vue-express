@@ -1,55 +1,79 @@
 <template>
  <v-layout>
+   <v-snackbar
+     :timeout="timeout"
+     :top="y === 'top'"
+     :bottom="y === 'bottom'"
+     :right="x === 'right'"
+     :left="x === 'left'"
+     :multi-line="mode === 'multi-line'"
+     :vertical="mode === 'vertical'"
+     v-model="snackbar">
+     {{ snackText }}
+     <v-btn flat color="pink" @click="snackbar = false">Close</v-btn>
+   </v-snackbar>
+
    <v-flex xs4>
       <panel title="Add a song">
           <v-text-field
             label="Title"
             v-model="song.title"
+            required
+            :rules="[required]"
           ></v-text-field>
 
           <v-text-field
             label="Artist"
             v-model="song.artist"
+            required
+            :rules="[required]"
           ></v-text-field>
 
           <v-text-field
             label="Genre"
             v-model="song.genre"
+            required
+            :rules="[required]"
           ></v-text-field>
 
           <v-text-field
             label="Album"
             v-model="song.album"
+            required
+            :rules="[required]"
           ></v-text-field>
 
           <v-text-field
             label="Album image link"
             v-model="song.albumImg"
+            required
+            :rules="[required]"
           ></v-text-field>
 
           <v-text-field
             label="Youtube ID"
             v-model="song.youtubeId"
           ></v-text-field>
-
       </panel>
    </v-flex>
+
    <v-flex xs8 class="ml-4">
      <panel title="Song Structure">
        <v-text-field
          label="Lyrics"
-         v-model="lyrics"
-         multiLine="true"
+         v-model="song.lyrics"
+         multi-line
        ></v-text-field>
 
        <v-text-field
          label="Tab"
-         v-model="tab"
-         multiLine="true"
+         v-model="song.tab"
+         multi-line
        ></v-text-field>
      </panel>
-     <v-btn class="cyan" dark @click="create">Create</v-btn>
+     <v-btn class="cyan" light medium right middle @click="create">Create</v-btn>
    </v-flex>
+
 </v-layout>
 </template>
 
@@ -69,7 +93,14 @@
           youtubeId: null,
           lyrics: null,
           tab: null
-        }
+        },
+        required: (value) => !!value || 'Required!',
+        snackbar: false,
+        y: 'top',
+        x: null,
+        mode: '',
+        timeout: 3000,
+        snackText: ''
       }
     },
     components: {
@@ -77,11 +108,20 @@
     },
     methods: {
      async create() {
+       const allFieldsFilled = Object
+         .keys(this.song)
+         .every(key => !!this.song[key])
+
+       if(!allFieldsFilled) {
+         this.snackText = 'Please fill all fields'
+         this.snackbar = true
+         return
+       }
        try {
-       this.$router.push({
-         name: 'songs'
-       });
-        await SongsService.createSong(this.song)
+         this.$router.push({
+           name: 'songs'
+         });
+         await SongsService.createSong(this.song)
        }catch(err){
          console.log(err)
        }

@@ -1,8 +1,7 @@
 <template>
-  <v-layout column>
-    <v-flex xs6 offset-xs3>
+  <v-layout>
+    <v-flex xs6>
       <panel title="Login">
-        <div class="pl-4 pr-4 pt-2 pb-2" >
           <v-text-field
             label="Email"
             v-model="email"
@@ -15,6 +14,7 @@
           <v-btn class="cyan" dark @click="login">Login</v-btn>
           <br>
           <!--<div class="success" v-html="success"></div>-->
+
           <v-snackbar
             :timeout="timeout"
             :top="y === 'top'"
@@ -24,21 +24,19 @@
             :multi-line="mode === 'multi-line'"
             :vertical="mode === 'vertical'"
             v-model="snackbar">
-
             {{ text }}
             <v-btn flat color="pink" @click="snackbar = false">Close</v-btn>
           </v-snackbar>
-
-        </div>
       </panel>
     </v-flex>
   </v-layout>
-
 </template>
 
 <script>
   /* eslint-disable */
   import authenticationService from '@/services/authenticationService'
+  import Panel from '@/components/Panel'
+
   export default {
     data () {
       return {
@@ -69,15 +67,15 @@
           this.text = error.response.data.error
         }
       }
+    },
+    components: {
+      Panel
     }
   }
 </script>
 
 <style scoped>
-  .error {
-    color: darkred;
-  }
-  .success {
-    background-color: darkgreen;
+  #loginPanel {
+    margin: 0 auto;
   }
 </style>
