@@ -12,6 +12,7 @@
 </template>
 
 <script>
+  /* eslint-disable */
 import PageHeader from '@/components/Header.vue'
 import Login from '@/components/login.vue'
 

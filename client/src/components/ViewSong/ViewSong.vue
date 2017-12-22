@@ -23,8 +23,9 @@
 </template>
 
 <script>
+  /* eslint-disable */
   import SongsService from '@/services/SongsService'
-  import Panel from '@/components/Panel'
+  import Panel from '@/components/globals/Panel'
   import SongMetadata from './SongMetadata.vue'
   import YouTube from './YouTube.vue'
   import Lyrics from './Lyrics.vue'

@@ -27,7 +27,7 @@
           </v-btn>
         </v-flex>
         <v-flex xs6>
-          <img class="album-image" :src="song.albumImg" alt="shizika">
+          <img class="album-image elevation-7" :src="song.albumImg" alt="shizika">
         </v-flex>
       </v-layout>
     </div>
@@ -35,7 +35,8 @@
 </template>
 
 <script>
-  import Panel from '@/components/Panel'
+  /* eslint-disable */
+  import Panel from '@/components/globals/Panel'
   import SongsService from '@/services/SongsService'
   export default {
     components: {
@@ -46,6 +47,14 @@
         songs: null
       }
     },
+    watch: {
+      '$route.query.search': {
+        immediate: true,
+       async handler (value) {
+          this.songs = (await SongsService.getAllSongs(value)).data
+        }
+    }
+  },
     async mounted () {
       this.songs = (await SongsService.getAllSongs()).data
     },

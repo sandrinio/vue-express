@@ -1,32 +1,26 @@
 <template>
   <v-layout>
     <v-flex xs6 offset-xs3>
-      <songs-panel />
+      <songs-search-panel />
+      <songs-panel class="mt-4"/>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-  import Panel from '@/components/Panel'
-  import SongsService from '@/services/SongsService'
-  import SongsPanel from './SongsPanel.vue'
+  /* eslint-disable */
+import SongsService from '@/services/SongsService'
+import SongsPanel from './SongsPanel.vue'
+import SongsSearchPanel from './SongsSearchPanel.vue'
 
   export default {
     components: {
-      Panel,
-      SongsPanel
+      SongsPanel,
+      SongsSearchPanel
     },
     data () {
       return {
         songs: null
-      }
-    },
-    async mounted () {
-      this.songs = (await SongsService.getAllSongs()).data
-    },
-    methods: {
-      navigateTo (route) {
-        this.$router.push(route)
       }
     }
   }

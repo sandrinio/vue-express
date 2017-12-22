@@ -1,8 +1,13 @@
+/* eslint-disable */
 import Api from '@/services/Api'
 
 export default {
-  getAllSongs () {
-    return Api().get('/songs')
+  getAllSongs (search) {
+    return Api().get('/songs', {
+      params: {
+        search: search
+      }
+    })
   },
   createSong (song){
     return Api().post('/songs', song)

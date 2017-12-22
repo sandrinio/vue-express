@@ -5,7 +5,8 @@
 </template>
 
 <script>
-  import Panel from '../Panel.vue'
+  /* eslint-disable */
+  import Panel from '../globals/Panel.vue'
 
   export default {
     props: [

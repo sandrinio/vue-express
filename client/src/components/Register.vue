@@ -1,6 +1,4 @@
 <template>
-
-
   <v-layout column>
     <v-flex xs6 offset-xs3>
       <div class="white elevation-2">
@@ -36,8 +34,6 @@
       </div>
     </v-flex>
   </v-layout>
-
-
 </template>
 
 <script>

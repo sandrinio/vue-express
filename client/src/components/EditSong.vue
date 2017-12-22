@@ -78,7 +78,8 @@
 </template>
 
 <script>
-  import Panel from '@/components/Panel'
+  /* eslint-disable */
+  import Panel from '@/components/globals/Panel'
   import SongsService from '@/services/SongsService'
 
   export default {

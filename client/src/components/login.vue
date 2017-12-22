@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs6>
+    <v-flex xs6 offset-xs3>
       <panel title="Login">
           <v-text-field
             label="Email"
@@ -35,7 +35,7 @@
 <script>
   /* eslint-disable */
   import authenticationService from '@/services/authenticationService'
-  import Panel from '@/components/Panel'
+  import Panel from '@/components/globals/Panel'
 
   export default {
     data () {
