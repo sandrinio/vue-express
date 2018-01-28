@@ -1,22 +1,18 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <v-layout>
+      <v-flex xs12 sm6 offset-sm3>
+        <v-carousel>
+          <v-carousel-item
+            v-for="meetup in meetups"
+            :key="meetup.id"
+            :src="meetup.imageUrl"
+            transition="fade"
+            reverseTransition="fade"
+          ></v-carousel-item>
+        </v-carousel>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
@@ -25,7 +21,16 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      meetups: [
+        { imageUrl: 'https://www.fourseasons.com/content/dam/fourseasons/images/web/NYF/NYF_395crop_1280x486.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
+          id: 'dksajdlkasj213',
+          title: 'Meetup in NY'
+        },
+        { imageUrl: 'https://www.fourseasons.com/content/dam/fourseasons/images/web/NYF/NYF_395crop_1280x486.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
+          id: 'dksajdsappasj213',
+          title: 'Meetup in NY'
+        }
+      ]
     }
   }
 }

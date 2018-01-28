@@ -9,7 +9,7 @@
     "lint:fix": "eslint src/**/*.js  --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sandro Suladze",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
